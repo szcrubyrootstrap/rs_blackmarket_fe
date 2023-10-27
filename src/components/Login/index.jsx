@@ -1,35 +1,49 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "wouter"
+import { useLocation, Link } from "wouter"
 import useUser from "../../hooks/useUser";
 
 export default function Login () {
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [, navigate] = useLocation()
-  const {isLogged, login} = useUser()
+  const {loginError, isLoading, isLogged, login} = useUser()
 
   useEffect(() => {
-    if (isLogged) { navigate('/') }
+    if (isLogged) {
+      navigate('/')
+    }
   }, [isLogged, navigate])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    login()
+    login({ email, password })
   }
 
   return (
-    <form onSubmit={submitHandler}>
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={e => setUsername(e.target.value)} value={username}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={e => setPassword(e.target.value)} value={password}
-      />
-      <button>Login</button>
-    </form>
+    <>
+      <h2>Login</h2>
+      { isLoading && <strong>Wait...</strong> }
+      { !isLoading &&
+        <form onSubmit={submitHandler}>
+          <input
+            type="text"
+            placeholder="Email"
+            onChange={e => setEmail(e.target.value)} value={email}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={e => setPassword(e.target.value)} value={password}
+          />
+          <button>Login</button>
+        </form>
+      }
+      { loginError && <strong>Credentials are not correct.</strong> }
+      {
+        isLogged
+        ? ''
+        : <Link to="/registration">Registration</Link>
+      }
+    </>
   )
 }
