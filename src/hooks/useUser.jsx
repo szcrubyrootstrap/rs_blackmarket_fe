@@ -1,6 +1,7 @@
 import { useContext, useCallback, useState } from 'react'
 import Context from '../contexts/UserContext'
 import loginService from './../services/login'
+import logoutService from './../services/logout'
 
 export default function useUser () {
   const {token, setToken} = useContext(Context)
@@ -10,23 +11,35 @@ export default function useUser () {
     setState({ loading: true, error: false })
     loginService({ email, password })
     .then(res => {
-      const client = res.headers.get('client')
+      const requestHeaders = {
+        accessToken: res.headers.get('access-token'),
+        client: res.headers.get('client'),
+        expiry: res.headers.get('expiry'),
+        tokenType: res.headers.get('token-type'),
+        uid: res.headers.get('uid')
+      }
 
-      window.sessionStorage.setItem('token', client)
-      setToken(client)
+      window.localStorage.setItem('token', JSON.stringify(requestHeaders))
+      setToken(requestHeaders)
       setState({ loading: false, error: false })
     })
     .catch(err => {
-      window.sessionStorage.removeItem('token')
+      window.localStorage.removeItem('token')
       setState({ loading: false, error: true })
       console.log(err)
     })
   }, [setToken])
 
   const logout = useCallback(() => {
-    window.sessionStorage.removeItem('token')
-    setToken(null)
-  }, [setToken])
+    logoutService(token)
+    .then(res => {
+      window.sessionStorage.removeItem('token')
+      setToken(null)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [token, setToken])
 
   return {
     isLogged: Boolean(token),
