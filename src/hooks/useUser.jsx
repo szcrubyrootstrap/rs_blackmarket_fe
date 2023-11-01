@@ -26,7 +26,6 @@ export default function useUser () {
     .catch(err => {
       window.localStorage.removeItem('token')
       setState({ loading: false, error: true })
-      console.log(err)
     })
   }, [setToken])
 

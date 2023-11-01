@@ -1,6 +1,6 @@
 const ENDPOINT = "http://localhost:3000/api/v1/users/sign_out/"
 
-export default (headers) => {
+export default function logout (headers) {
   return (
     fetch(`${ENDPOINT}`, {
       method: 'DELETE',
@@ -8,8 +8,6 @@ export default (headers) => {
         'Content-Type': 'application/json',
         'access-token': headers.accessToken,
         'client': headers.client,
-        'expiry': headers.expiry,
-        'token-type': headers.tokenType,
         'uid': headers.uid
       }
     }).then(res => {
