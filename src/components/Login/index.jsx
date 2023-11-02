@@ -21,29 +21,30 @@ export default function Login () {
 
   return (
     <>
-      <h2>Login</h2>
       { isLoading && <strong>Wait...</strong> }
       { !isLoading &&
         <form onSubmit={submitHandler}>
-          <input
-            type="text"
-            placeholder="Email"
-            onChange={e => setEmail(e.target.value)} value={email}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={e => setPassword(e.target.value)} value={password}
-          />
+          <img src='./Union.svg' alt="union" />
+          <div className="email">
+            <label for="email">Email</label><br/>
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={e => setEmail(e.target.value)} value={email}
+            />
+          </div>
+          <div className="className">
+            <label for="password">Password</label><br/>
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={e => setPassword(e.target.value)} value={password}
+            />
+          </div>
           <button>Login</button>
         </form>
       }
       { loginError && <strong>Credentials are not correct.</strong> }
-      {
-        isLogged
-        ? ''
-        : <Link to="/registration">Registration</Link>
-      }
     </>
   )
 }
