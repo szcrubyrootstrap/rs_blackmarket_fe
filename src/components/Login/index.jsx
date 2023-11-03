@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "wouter"
 import useUser from "../../hooks/useUser";
+import Eye from "../Icons/Eye";
 
 export default function Login () {
   const [email, setEmail] = useState('')
@@ -48,6 +49,9 @@ export default function Login () {
             onChange={changePasswordHandler} value={password}
             required
           />
+          <div className="eye-icon">
+            <Eye />
+          </div>
         </div>
         <button className="submit">Login</button>
       </form>

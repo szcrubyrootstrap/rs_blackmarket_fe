@@ -1,8 +1,8 @@
 import { Route, Switch } from "wouter";
 
-import Home from './components/Home/index'
-import Login from './pages/Login/index'
-import Registration from './components/Registration/index'
+import Home from './components/Home'
+import Login from './pages/Login'
+import Registration from './pages/Registration'
 import { UserContextProvider } from './contexts/UserContext'
 
 function App() {

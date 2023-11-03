@@ -16,7 +16,7 @@ input {
   padding: 0 8px;
 }
 
-.email, .password {
+.email, .password, .password-confirmation, .full-name {
   display: flex;
   flex-direction: column;
   margin-bottom: 13px;
@@ -28,6 +28,14 @@ input {
   display: flex;
   flex-direction: column;
   height: 425px;
+  padding: 47px 36px 0 36px;
+}
+
+.container-registration {
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
   padding: 47px 36px 0 36px;
 }
 
@@ -45,7 +53,7 @@ input {
   padding: 66.5px 119px;
 }
 
-.login {
+.login, .registration-page {
   width: 360px;
   height: 575px;
   gap: 20px;
@@ -53,22 +61,19 @@ input {
   flex-direction: column;
 }
 
-.registration {
-  background: white;
-  height: 130px;
-}
-
 .submit {
   background: #00031A;
   color: white;
   height: 44px;
 }
+
 .registration{
   align-items: center;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  padding: 0 37.5px;
+  padding: 24.5px 37.5px;
+  background: white;
 }
 
 .registration-button {
@@ -76,6 +81,10 @@ input {
   background: white;
   border: 1px black solid;
   color: black;
+}
+
+.registration p {
+  padding-bottom: 16px;
 }
 
 .registration-button:hover{
@@ -101,4 +110,39 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.policies, .account {
+  text-align: center;
+  font-weight: 700;
+  line-height: 21.34px;
+}
+
+a {
+  color: #076CE0;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.policies{
+  padding: 22px 0;
+}
+
+.account {
+  padding-bottom: 30px;
+}
+
+.password, .password-confirmation {
+  position: relative;
+}
+
+.password input, .password-confirmation input {
+  padding-right: 48px;
+}
+
+.password .eye-icon, .password-confirmation .eye-icon {
+  position: absolute;
+  right: 17px;
+  bottom: 10.83px;
+  display: flex;
 }

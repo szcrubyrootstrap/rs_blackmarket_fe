@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { useLocation } from "wouter"
+import { useLocation, Link } from "wouter"
 import registrateService from '../../services/registrate'
+import Eye from "../Icons/Eye";
 
 export default function Registration () {
     const [email, setEmail] = useState('')
+    const [fullname, setFullnameHandler] = useState('')
     const [password, setPassword] = useState('')
     const [password_confirmation, setPasswordConfirmation] = useState('')
     const [, navigate] = useLocation()
@@ -25,30 +27,77 @@ export default function Registration () {
       e.preventDefault()
       registrate({ email, password, password_confirmation })
     }
-  
+
+    const changeEmailHandler = (e) => {
+      setEmail(e.target.value)
+    }
+
+    const changePasswordHandler = (e) => {
+      setPassword(e.target.value)
+    }
+
+    const changePasswordConfirmationHandler = (e) => {
+      setPasswordConfirmation(e.target.value)
+    }
+
+    const changefullnameHandler = (e) => {
+      setFullnameHandler(e.target.value)
+    }
+
     return (
-      <>
-        { !registrationState.loading &&
-          <form onSubmit={submitHandler}>
+      <div className="container-registration">
+        <img src='./Union.svg' alt="union" />
+        <form onSubmit={submitHandler}>
+          <div className="email">
+            <label htmlFor="email">Email</label>
             <input
-              type="text"
-              placeholder="Email"
-              onChange={e => setEmail(e.target.value)} value={email}
+              type="email"
+              placeholder="Type your email"
+              onChange={changeEmailHandler} value={email}
+              required
             />
+          </div>
+          <div className="full-name">
+            <label htmlFor="fullname">Fullname</label>
+            <input
+              type="fullname"
+              placeholder="Type your full name"
+              onChange={changefullnameHandler} value={fullname}
+              required
+            />
+          </div>
+          <div className="password">
+            <label htmlFor="password">Password</label>
             <input
               type="password"
-              placeholder="Password"
-              onChange={e => setPassword(e.target.value)} value={password}
+              placeholder="Type your password"
+              onChange={changePasswordHandler} value={password}
+              required
             />
+            <div className="eye-icon">
+              <Eye />
+            </div>
+          </div>
+          <div className="password-confirmation">
+            <label htmlFor="password-confirmation">Confirm Password</label>
             <input
               type="password"
-              placeholder="Password Confirmation"
-              onChange={e => setPasswordConfirmation(e.target.value)} value={password_confirmation}
+              placeholder="Type your password"
+              onChange={changePasswordConfirmationHandler} value={password_confirmation}
+              required
             />
-            <button>Registrate</button>
-          </form>
-        }
-        { registrationState.error && <strong>{registrationState.message}</strong> }
-      </>
+            <div className="eye-icon">
+              <Eye />
+            </div>
+          </div>
+          <button className="submit">Sign up</button>
+        </form>
+        <div className="policies">
+          <p>By signing up, you accept the <Link to="/">Data Policy</Link> and the <Link to="/">Cookies Policy</Link>.</p>
+        </div>
+        <div className="account">
+          <p>Already have an account? <Link to="/">Log in</Link></p>
+        </div>
+      </div>
     )
   }
