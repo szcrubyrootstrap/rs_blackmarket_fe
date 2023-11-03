@@ -1,31 +1,51 @@
 form {
   display: flex;
   flex-direction: column;
-  height: 425px;
-  background: white;
-  border-radius: 8px;
-  padding: 47px 36px;
+  margin-top: 48px;
 }
 
 img {
   align-self: center;
 }
 
+input {
+  padding: 0 8px;
+  border-radius: 8px;
+  border: 1px black solid;
+  height: 40px;
+  margin-top: 4px;
+}
+
+.email, .password {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 13px;
+}
+
+.container {
+  height: 425px;
+  background: white;
+  padding: 47px 36px 0 36px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
 .background {
-    /* Full height */
-    height: 100%;
+  /* Full height */
+  height: 100%;
 
-    background-image: url('./Black_Market_wallpaper.svg');
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url('./Black_Market_wallpaper.svg');
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 66.5px 119px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 66.5px 119px;
 }
 
 .login {
@@ -40,4 +60,47 @@ img {
 .registration {
   height: 130px;
   background: white;
+}
+
+.submit {
+  background: #00031A;
+  color: white;
+  height: 44px;
+}
+.registration{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.registration-button {
+  background: white;
+  color: black;
+  border: 1px black solid;
+}
+
+.registration-button:hover{
+  background: #E0E0E0;
+  border: 1px black solid;
+}
+
+.error-messages {
+  color: red;
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.forgot-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

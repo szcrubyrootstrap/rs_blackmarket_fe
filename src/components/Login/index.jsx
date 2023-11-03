@@ -6,7 +6,7 @@ export default function Login () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [, navigate] = useLocation()
-  const {loginError, isLoading, isLogged, login} = useUser()
+  const {loginError, isLogged, login, loginErrorMessage} = useUser()
 
   useEffect(() => {
     if (isLogged) {
@@ -19,32 +19,46 @@ export default function Login () {
     login({ email, password })
   }
 
+  const changeEmailHandler = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const changePasswordHandler = (e) => {
+    setPassword(e.target.value)
+  }
+
   return (
-    <>
-      { isLoading && <strong>Wait...</strong> }
-      { !isLoading &&
-        <form onSubmit={submitHandler}>
-          <img src='./Union.svg' alt="union" />
-          <div className="email">
-            <label for="email">Email</label><br/>
-            <input
-              type="email"
-              placeholder="Email"
-              onChange={e => setEmail(e.target.value)} value={email}
-            />
-          </div>
-          <div className="className">
-            <label for="password">Password</label><br/>
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={e => setPassword(e.target.value)} value={password}
-            />
-          </div>
-          <button>Login</button>
-        </form>
-      }
-      { loginError && <strong>Credentials are not correct.</strong> }
-    </>
+    <div className="container">
+      <img src='./Union.svg' alt="union" />
+      <form onSubmit={submitHandler}>
+        <div className="email">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            placeholder="Type your email"
+            onChange={changeEmailHandler} value={email}
+            required
+          />
+        </div>
+        <div className="password">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            placeholder="Type your password"
+            onChange={changePasswordHandler} value={password}
+            required
+          />
+        </div>
+        <button className="submit">Login</button>
+      </form>
+      <div className="footer">
+        <div className="error-messages">
+          { loginError && <strong>{loginErrorMessage}</strong> }
+        </div>
+        <div className="forgot-password">
+          <Link to="/">I forgot my password.</Link>
+        </div>
+      </div>
+    </div>
   )
 }

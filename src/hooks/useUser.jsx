@@ -5,10 +5,10 @@ import logoutService from './../services/logout'
 
 export default function useUser () {
   const {token, setToken} = useContext(Context)
-  const [state, setState] = useState({ loading: false, error: false })
+  const [state, setState] = useState({ loading: false, error: false, errorMessage: '' })
 
   const login = useCallback(({ email, password }) => {
-    setState({ loading: true, error: false })
+    setState({ loading: true, error: false, errorMessage: '' })
     loginService({ email, password })
     .then(res => {
       const requestHeaders = {
@@ -21,11 +21,11 @@ export default function useUser () {
 
       window.localStorage.setItem('token', JSON.stringify(requestHeaders))
       setToken(requestHeaders)
-      setState({ loading: false, error: false })
+      setState({ loading: false, error: false, errorMessage: '' })
     })
     .catch(err => {
       window.localStorage.removeItem('token')
-      setState({ loading: false, error: true })
+      setState({ loading: false, error: true, errorMessage: err.message })
     })
   }, [setToken])
 
@@ -43,6 +43,7 @@ export default function useUser () {
   return {
     isLogged: Boolean(token),
     loginError: state.error,
+    loginErrorMessage: state.errorMessage,
     isLoading: state.loading,
     login,
     logout
