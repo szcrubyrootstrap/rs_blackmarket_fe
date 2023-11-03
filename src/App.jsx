@@ -1,4 +1,3 @@
-import './App.css'
 import { Route, Switch } from "wouter";
 
 import Home from './components/Home/index'

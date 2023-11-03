@@ -9,11 +9,11 @@ img {
 }
 
 input {
-  padding: 0 8px;
   border-radius: 8px;
   border: 1px black solid;
   height: 40px;
   margin-top: 4px;
+  padding: 0 8px;
 }
 
 .email, .password {
@@ -23,28 +23,25 @@ input {
 }
 
 .container {
-  height: 425px;
   background: white;
-  padding: 47px 36px 0 36px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  height: 425px;
+  padding: 47px 36px 0 36px;
 }
 
 .background {
-  /* Full height */
-  height: 100%;
-
   background-image: url('./Black_Market_wallpaper.svg');
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
+  height: 100%;
   justify-content: flex-start;
-  align-items: flex-start;
   padding: 66.5px 119px;
 }
 
@@ -52,14 +49,13 @@ input {
   width: 360px;
   height: 575px;
   gap: 20px;
-
   display: flex;
   flex-direction: column;
 }
 
 .registration {
-  height: 130px;
   background: white;
+  height: 130px;
 }
 
 .submit {
@@ -68,16 +64,18 @@ input {
   height: 44px;
 }
 .registration{
-  display: flex;
-  flex-direction: column;
   align-items: center;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 37.5px;
 }
 
 .registration-button {
+  align-self: stretch;
   background: white;
-  color: black;
   border: 1px black solid;
+  color: black;
 }
 
 .registration-button:hover{
@@ -99,8 +97,8 @@ input {
 }
 
 .forgot-password {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 }

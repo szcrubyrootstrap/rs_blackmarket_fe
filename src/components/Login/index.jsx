@@ -32,7 +32,7 @@ export default function Login () {
       <img src='./Union.svg' alt="union" />
       <form onSubmit={submitHandler}>
         <div className="email">
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             placeholder="Type your email"
@@ -41,7 +41,7 @@ export default function Login () {
           />
         </div>
         <div className="password">
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             placeholder="Type your password"
