@@ -55,10 +55,13 @@ input {
 
 .login, .registration-page {
   width: 360px;
-  height: 575px;
   gap: 20px;
   display: flex;
   flex-direction: column;
+}
+
+.login {
+  height: 575px;
 }
 
 .submit {
@@ -150,4 +153,12 @@ a {
   right: 17px;
   bottom: 10.83px;
   display: flex;
+}
+
+@media (max-width: 720px) {
+  .background {
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
 }
