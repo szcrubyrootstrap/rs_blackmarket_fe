@@ -8,9 +8,14 @@ export default function login ({ email, password }) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ 'user': { email, password }})
-    }).then(res => {
-      if (!res.ok) throw new Error('Response is not correct')
-      return { headers: res.headers }
+    }).then(response => {
+      if (response.ok) {
+        return { headers: response.headers }
+      } else {
+        return response.json().then(res => {
+          throw new Error(res.error)
+        })
+      }
     })
   )
 }

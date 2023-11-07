@@ -12,17 +12,16 @@ export default function Registration () {
     const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
 
     const [, navigate] = useLocation()
-    const [registrationState, setRegistrationState] = useState({ loading: false, error: false, message: '' })
+    const [registrationState, setRegistrationState] = useState({ error: false, message: '' })
 
     const registrate = ({ email, password, password_confirmation }) => {
-      setRegistrationState({ loading: true, error: false, message: '' })
       registrateService({ email, password, password_confirmation })
       .then(res => {
-        setRegistrationState({ loading: false, error: false, message: '' })
+        setRegistrationState({ error: false, message: '' })
         navigate('/login')
       })
       .catch(err => {
-        setRegistrationState({ loading: false, error: true, message: err.message })
+        setRegistrationState({ error: true, message: err.message })
       })
     }
 
@@ -113,6 +112,9 @@ export default function Registration () {
             Sign up
           </button>
         </form>
+        <div className="error-messages">
+          { registrationState.error && <strong>{registrationState.message}</strong> }
+        </div>
         <div className="policies">
           <p>By signing up, you accept the <Link to="/">Data Policy</Link> and the <Link to="/">Cookies Policy</Link>.</p>
         </div>
