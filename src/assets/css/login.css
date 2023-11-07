@@ -40,7 +40,7 @@ input {
 }
 
 .background {
-  background-image: url('./Black_Market_wallpaper.svg');
+  background-image: url('../../images/Black_Market_wallpaper.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "wouter"
 import useUser from "../../hooks/useUser";
 import Eye from "../Icons/Eye";
+import IMAGES from '../../images/images'
 
 export default function Login () {
   const [email, setEmail] = useState('')
@@ -39,7 +40,7 @@ export default function Login () {
 
   return (
     <div className="container">
-      <img src='./Union.svg' alt="Black market logo" />
+      <img src={IMAGES.union} alt="Black market logo" />
       <form onSubmit={submitHandler}>
         <div className="email">
           <label htmlFor="email">Email</label>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, Link } from "wouter"
 import registrateService from '../../services/registrate'
 import Eye from "../Icons/Eye";
+import IMAGES from '../../images/images'
 
 export default function Registration () {
     const [email, setEmail] = useState('')
@@ -63,7 +64,7 @@ export default function Registration () {
 
     return (
       <div className="container-registration">
-        <img src='./Union.svg' alt="union" />
+        <img src={IMAGES.union} alt="Black market logo" />
         <form onSubmit={submitHandler}>
           <div className="email">
             <label htmlFor="email">Email</label>
