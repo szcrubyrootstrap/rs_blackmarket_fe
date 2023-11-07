@@ -8,6 +8,9 @@ export default function Registration () {
     const [fullname, setFullnameHandler] = useState('')
     const [password, setPassword] = useState('')
     const [password_confirmation, setPasswordConfirmation] = useState('')
+    const [showPassword, setShowPassword] = useState(false);
+    const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
+
     const [, navigate] = useLocation()
     const [registrationState, setRegistrationState] = useState({ loading: false, error: false, message: '' })
 
@@ -44,6 +47,22 @@ export default function Registration () {
       setFullnameHandler(e.target.value)
     }
 
+    const handlePasswordToggle = () => {
+      if(showPassword){
+        setShowPassword(false)
+      } else {
+        setShowPassword(true)
+      }
+    }
+
+    const handlePasswordConfirmationToggle = () => {
+      if(showPasswordConfirmation){
+        setShowPasswordConfirmation(false)
+      } else {
+        setShowPasswordConfirmation(true)
+      }
+    }
+
     return (
       <div className="container-registration">
         <img src='./Union.svg' alt="union" />
@@ -69,34 +88,36 @@ export default function Registration () {
           <div className="password">
             <label htmlFor="password">Password</label>
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               placeholder="Type your password"
               onChange={changePasswordHandler} value={password}
               required
             />
-            <div className="eye-icon">
+            <div className="eye-icon" onClick={handlePasswordToggle} title="Show password">
               <Eye />
             </div>
           </div>
           <div className="password-confirmation">
             <label htmlFor="password-confirmation">Confirm Password</label>
             <input
-              type="password"
+              type={showPasswordConfirmation ? 'text' : 'password'}
               placeholder="Type your password"
               onChange={changePasswordConfirmationHandler} value={password_confirmation}
               required
             />
-            <div className="eye-icon">
+            <div className="eye-icon" onClick={handlePasswordConfirmationToggle} title="Show password">
               <Eye />
             </div>
           </div>
-          <button className="submit">Sign up</button>
+          <button className="submit" disabled={!email || !fullname || !password || !password_confirmation}>
+            Sign up
+          </button>
         </form>
         <div className="policies">
           <p>By signing up, you accept the <Link to="/">Data Policy</Link> and the <Link to="/">Cookies Policy</Link>.</p>
         </div>
         <div className="account">
-          <p>Already have an account? <Link to="/">Log in</Link></p>
+          <p>Already have an account? <Link to="/login">Log in</Link></p>
         </div>
       </div>
     )

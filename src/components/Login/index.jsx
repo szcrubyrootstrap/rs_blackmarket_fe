@@ -6,6 +6,7 @@ import Eye from "../Icons/Eye";
 export default function Login () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false);
   const [, navigate] = useLocation()
   const {loginError, isLogged, login, loginErrorMessage} = useUser()
 
@@ -28,9 +29,17 @@ export default function Login () {
     setPassword(e.target.value)
   }
 
+  const handlePasswordToggle = () => {
+    if(showPassword){
+      setShowPassword(false)
+    } else {
+      setShowPassword(true)
+    }
+  }
+
   return (
     <div className="container">
-      <img src='./Union.svg' alt="union" />
+      <img src='./Union.svg' alt="Black market logo" />
       <form onSubmit={submitHandler}>
         <div className="email">
           <label htmlFor="email">Email</label>
@@ -44,12 +53,12 @@ export default function Login () {
         <div className="password">
           <label htmlFor="password">Password</label>
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             placeholder="Type your password"
             onChange={changePasswordHandler} value={password}
             required
           />
-          <div className="eye-icon">
+          <div className="eye-icon" onClick={handlePasswordToggle} title="Show password">
             <Eye />
           </div>
         </div>

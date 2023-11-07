@@ -67,6 +67,11 @@ input {
   height: 44px;
 }
 
+.submit:disabled {
+  background-color: #E0E0E0;
+  color: #636363;
+}
+
 .registration{
   align-items: center;
   border-radius: 8px;
