@@ -1,4 +1,4 @@
-const ENDPOINT = "http://localhost:3000/api/v1/users"
+const ENDPOINT = `${import.meta.env.VITE_SERVER_URL}/api/v1/users`
 
 export default function registrate ({ email, password, password_confirmation }) {
   return (
