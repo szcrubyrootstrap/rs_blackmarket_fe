@@ -10,9 +10,8 @@ export default function Registration () {
     const [password_confirmation, setPasswordConfirmation] = useState('')
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
-
-    const [, navigate] = useLocation()
     const [registrationState, setRegistrationState] = useState({ error: false, message: '' })
+    const [, navigate] = useLocation()
 
     const registrate = ({ email, password, password_confirmation }) => {
       registrateService({ email, password, password_confirmation })
