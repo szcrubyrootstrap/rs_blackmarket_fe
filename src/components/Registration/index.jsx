@@ -63,10 +63,10 @@ export default function Registration () {
     }
 
     return (
-      <div className="container-registration">
+      <div className="container-registration flex-column">
         <img src={IMAGES.union} alt="Black market logo" />
-        <form onSubmit={submitHandler}>
-          <div className="email">
+        <form onSubmit={submitHandler} className='flex-column'>
+          <div className="email flex-column">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -75,7 +75,7 @@ export default function Registration () {
               required
             />
           </div>
-          <div className="full-name">
+          <div className="full-name flex-column">
             <label htmlFor="fullname">Fullname</label>
             <input
               type="fullname"
@@ -84,7 +84,7 @@ export default function Registration () {
               required
             />
           </div>
-          <div className="password">
+          <div className="password flex-column">
             <label htmlFor="password">Password</label>
             <input
               type={showPassword ? 'text' : 'password'}
@@ -96,7 +96,7 @@ export default function Registration () {
               <Eye />
             </div>
           </div>
-          <div className="password-confirmation">
+          <div className="password-confirmation flex-column">
             <label htmlFor="password-confirmation">Confirm Password</label>
             <input
               type={showPasswordConfirmation ? 'text' : 'password'}
@@ -108,7 +108,7 @@ export default function Registration () {
               <Eye />
             </div>
           </div>
-          <button className="submit" disabled={!email || !fullname || !password || !password_confirmation}>
+          <button className="submit" type="submit" disabled={!email || !fullname || !password || !password_confirmation}>
             Sign up
           </button>
         </form>

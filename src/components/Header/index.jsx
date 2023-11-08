@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'wouter'
 import useUser from '../../hooks/useUser'
 

@@ -5,14 +5,20 @@ import Login from './pages/Login'
 import Registration from './pages/Registration'
 import { UserContextProvider } from './contexts/UserContext'
 
+const routes = [
+    { component: Home, path: '/' },
+    { component: Login, path: '/login' },
+    { component: Registration, path: '/registration' }
+]
+
 function App() {
   return (
     <>
       <UserContextProvider>
         <Switch>
-          <Route component={Home} path="/" />
-          <Route component={Login} path="/login" />
-          <Route component={Registration} path="/registration" />
+          {
+            routes.map(({component, path}, index) => <Route key={index} component={component} path={path} />)
+          }
         </Switch>
       </UserContextProvider>
     </>

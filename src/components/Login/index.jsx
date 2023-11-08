@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation, Link } from 'wouter'
 import useUser from '../../hooks/useUser'
 import Eye from '../Icons/Eye'
@@ -39,10 +39,10 @@ export default function Login () {
   }
 
   return (
-    <div className="container">
+    <div className="container flex-column">
       <img src={IMAGES.union} alt="Black market logo" />
-      <form onSubmit={submitHandler}>
-        <div className="email">
+      <form onSubmit={submitHandler} className='flex-column'>
+        <div className="email flex-column">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -51,7 +51,7 @@ export default function Login () {
             required
           />
         </div>
-        <div className="password">
+        <div className="password flex-column">
           <label htmlFor="password">Password</label>
           <input
             type={showPassword ? 'text' : 'password'}
@@ -63,13 +63,13 @@ export default function Login () {
             <Eye />
           </div>
         </div>
-        <button className="submit">Login</button>
+        <button className="submit" type="submit">Login</button>
       </form>
-      <div className="footer">
+      <div className="footer flex-column">
         <div className="error-messages">
           { loginError && <strong>{loginErrorMessage}</strong> }
         </div>
-        <div className="forgot-password">
+        <div className="forgot-password flex-column">
           <Link to="/">I forgot my password.</Link>
         </div>
       </div>
