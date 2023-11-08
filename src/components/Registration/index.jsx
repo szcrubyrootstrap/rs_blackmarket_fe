@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useLocation, Link } from "wouter"
+import { useState } from 'react'
+import { useLocation, Link } from 'wouter'
 import registrateService from '../../services/registrate'
-import Eye from "../Icons/Eye";
+import Eye from '../Icons/Eye'
 import IMAGES from '../../images/images'
 
 export default function Registration () {

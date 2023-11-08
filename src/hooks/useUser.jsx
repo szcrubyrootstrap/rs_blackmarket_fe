@@ -7,20 +7,22 @@ export default function useUser () {
   const {token, setToken} = useContext(Context)
   const [state, setState] = useState({ loading: false, error: false, errorMessage: '' })
 
+  const headersData = (response) => {
+    return {
+      accessToken: response.headers.get('access-token'),
+      client: response.headers.get('client'),
+      expiry: response.headers.get('expiry'),
+      tokenType: response.headers.get('token-type'),
+      uid: response.headers.get('uid')
+    }
+  }
+
   const login = useCallback(({ email, password }) => {
     setState({ loading: true, error: false, errorMessage: '' })
     loginService({ email, password })
     .then(res => {
-      const requestHeaders = {
-        accessToken: res.headers.get('access-token'),
-        client: res.headers.get('client'),
-        expiry: res.headers.get('expiry'),
-        tokenType: res.headers.get('token-type'),
-        uid: res.headers.get('uid')
-      }
-
-      window.localStorage.setItem('token', JSON.stringify(requestHeaders))
-      setToken(requestHeaders)
+      window.localStorage.setItem('token', JSON.stringify(headersData(res)))
+      setToken(headersData(res))
       setState({ loading: false, error: false, errorMessage: '' })
     })
     .catch(err => {
@@ -44,7 +46,6 @@ export default function useUser () {
     isLogged: Boolean(token),
     loginError: state.error,
     loginErrorMessage: state.errorMessage,
-    isLoading: state.loading,
     login,
     logout
   }

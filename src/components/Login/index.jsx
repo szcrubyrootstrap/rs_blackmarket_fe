@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "wouter"
-import useUser from "../../hooks/useUser";
-import Eye from "../Icons/Eye";
+import React, { useState, useEffect } from 'react'
+import { useLocation, Link } from 'wouter'
+import useUser from '../../hooks/useUser'
+import Eye from '../Icons/Eye'
 import IMAGES from '../../images/images'
 
 export default function Login () {
