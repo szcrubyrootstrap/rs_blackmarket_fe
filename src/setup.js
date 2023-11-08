@@ -7,7 +7,8 @@ export const endpointsUrl = {
 export const urlPath = {
   'home': '/',
   'login': '/login',
-  'registration': '/registration'
+  'registration': '/registration',
+  'recoverPassword': '/recover_password'
 }
 
 export function capitalizeFirstLetter (str) {

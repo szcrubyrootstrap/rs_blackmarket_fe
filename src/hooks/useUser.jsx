@@ -1,14 +1,16 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useUserContext } from 'contexts/UserContext'
 import loginService from 'services/login'
 import logoutService from 'services/logout'
 import registrateService from 'services/registrate'
 import { useLocation } from 'wouter'
 import { urlPath } from 'src/setup'
+import recoverPasswordService from 'services/recoverPassword'
 
 export default function useUser () {
   const {token, setToken, loginError, setLoginError, registrationError, setRegistrationError} = useUserContext()
   const [, navigate] = useLocation()
+  const [state, setState] = useState({ error: false, errorMessage: '' })
   const headersData = (response) => {
     return {
       accessToken: response.headers.get('access-token'),
@@ -56,14 +58,26 @@ export default function useUser () {
     }
   }, [navigate, setRegistrationError])
 
+  const recoverPassword = useCallback(({ email }) => {
+    recoverPasswordService({ email })
+    .then(res => {
+      setState({ error: false, errorMessage: '', emailSent: true })
+    })
+    .catch(err => {
+      setState({ error: true, errorMessage: err.message, emailSent: false })
+    })
+  }, [setState])
+
   return {
     isLogged: Boolean(token),
     loginError: Boolean(loginError.error),
     loginErrorMessage: loginError.message,
     registrationError: Boolean(registrationError.error),
     registrationErrorMessage: registrationError.message,
+    recoveryEmailSent: state.emailSent,
     login,
     logout,
-    registrate
+    registrate,
+    recoverPassword
   }
 }

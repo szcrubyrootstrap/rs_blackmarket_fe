@@ -5,11 +5,13 @@ import Login from 'pages/Login'
 import Registration from 'pages/Registration'
 import UserContextProvider from 'contexts/UserContext'
 import { urlPath } from 'src/setup'
+import RecoverPassword from 'pages/RecoverPassword'
 
 const routes = [
   { component: Home, path: urlPath.home },
   { component: Login, path: urlPath.login },
-  { component: Registration, path: urlPath.registration }
+  { component: Registration, path: urlPath.registration },
+  { component: RecoverPassword, path: urlPath.recoverPassword }
 ]
 
 function App() {
