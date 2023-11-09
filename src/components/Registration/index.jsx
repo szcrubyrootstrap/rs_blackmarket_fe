@@ -14,15 +14,14 @@ export default function Registration () {
     const [registrationState, setRegistrationState] = useState({ error: false, message: '' })
     const [, navigate] = useLocation()
 
-    const registrate = ({ email, password, password_confirmation }) => {
-      registrateService({ email, password, password_confirmation })
-      .then(res => {
+    const registrate = async ({ email, password, password_confirmation }) => {
+      try{
+        await registrateService({ email, password, password_confirmation })
         setRegistrationState({ error: false, message: '' })
         navigate('/login')
-      })
-      .catch(err => {
+      } catch (err) {
         setRegistrationState({ error: true, message: err.message })
-      })
+      }
     }
 
     const submitHandler = (e) => {

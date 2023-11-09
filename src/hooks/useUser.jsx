@@ -17,29 +17,29 @@ export default function useUser () {
     }
   }
 
-  const login = useCallback(({ email, password }) => {
+  const login = useCallback(async ({ email, password }) => {
     setState({ loading: true, error: false, errorMessage: '' })
-    loginService({ email, password })
-    .then(res => {
-      window.localStorage.setItem('token', JSON.stringify(headersData(res)))
-      setToken(headersData(res))
+
+    try{
+      const response = await loginService({ email, password })
+
+      window.localStorage.setItem('token', JSON.stringify(headersData(response)))
+      setToken(headersData(response))
       setState({ loading: false, error: false, errorMessage: '' })
-    })
-    .catch(err => {
+    } catch (err) {
       window.localStorage.removeItem('token')
       setState({ loading: false, error: true, errorMessage: err.message })
-    })
+    }
   }, [setToken])
 
-  const logout = useCallback(() => {
-    logoutService(token)
-    .then(res => {
+  const logout = useCallback(async () => {
+    try {
+      await logoutService(token)
       window.sessionStorage.removeItem('token')
       setToken(null)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    } catch(err) {
+      console.log(err.message)
+    }
   }, [token, setToken])
 
   return {
