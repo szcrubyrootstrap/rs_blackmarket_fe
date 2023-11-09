@@ -1,12 +1,13 @@
-import { useContext, useCallback, useState } from 'react'
+import { useContext, useCallback } from 'react'
 import Context from 'contexts/UserContext'
 import loginService from 'services/login'
 import logoutService from 'services/logout'
+import registrateService from 'services/registrate'
+import { useLocation } from 'wouter'
 
 export default function useUser () {
-  const {token, setToken} = useContext(Context)
-  const [state, setState] = useState({ loading: false, error: false, errorMessage: '' })
-
+  const {token, setToken, loginError, setLoginError, registrationError, setRegistrationError} = useContext(Context)
+  const [, navigate] = useLocation()
   const headersData = (response) => {
     return {
       accessToken: response.headers.get('access-token'),
@@ -18,19 +19,19 @@ export default function useUser () {
   }
 
   const login = useCallback(async ({ email, password }) => {
-    setState({ loading: true, error: false, errorMessage: '' })
+    setLoginError({ loading: true, error: false, message: '' })
 
     try{
       const response = await loginService({ email, password })
 
       window.localStorage.setItem('token', JSON.stringify(headersData(response)))
       setToken(headersData(response))
-      setState({ loading: false, error: false, errorMessage: '' })
+      setLoginError({ error: false, message: '' })
     } catch (err) {
       window.localStorage.removeItem('token')
-      setState({ loading: false, error: true, errorMessage: err.message })
+      setLoginError({ error: true, message: err.message })
     }
-  }, [setToken])
+  }, [setToken, setLoginError])
 
   const logout = useCallback(async () => {
     try {
@@ -42,11 +43,26 @@ export default function useUser () {
     }
   }, [token, setToken])
 
+  const registrate = useCallback(async ({ email, password, password_confirmation }) => {
+    setRegistrationError({ error: false, message: '' })
+
+    try{
+      await registrateService({ email, password, password_confirmation })
+      setRegistrationError({ error: false, message: '' })
+      navigate('/login')
+    } catch (err) {
+      setRegistrationError({ error: true, message: err.message })
+    }
+  }, [navigate, setRegistrationError])
+
   return {
     isLogged: Boolean(token),
-    loginError: state.error,
-    loginErrorMessage: state.errorMessage,
+    loginError: Boolean(loginError.error),
+    loginErrorMessage: loginError.message,
+    registrationError: Boolean(registrationError.error),
+    registrationErrorMessage: registrationError.message,
     login,
-    logout
+    logout,
+    registrate
   }
 }

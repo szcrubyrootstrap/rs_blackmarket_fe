@@ -66,6 +66,7 @@ input {
 .submit:disabled {
   background-color: var(--submit-hover);
   color: var(--submit-disabled);
+  border: 1px var(--submit-hover) solid;
 }
 
 .registration{
