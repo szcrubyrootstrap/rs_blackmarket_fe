@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useLocation, Link } from 'wouter'
-import useUser from '../../hooks/useUser'
-import Eye from '../Icons/Eye'
-import IMAGES from '../../images/images'
+import useUser from 'hooks/useUser'
+import Eye from 'components/Icons/Eye'
+import IMAGES from 'images/images'
 
 export default function Login () {
   const [email, setEmail] = useState('')
@@ -30,13 +30,7 @@ export default function Login () {
     setPassword(e.target.value)
   }
 
-  const handlePasswordToggle = () => {
-    if(showPassword){
-      setShowPassword(false)
-    } else {
-      setShowPassword(true)
-    }
-  }
+  const handlePasswordToggle = () => setShowPassword(!showPassword)
 
   return (
     <div className="container flex-column">

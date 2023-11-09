@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useLocation, Link } from 'wouter'
-import registrateService from '../../services/registrate'
-import Eye from '../Icons/Eye'
-import IMAGES from '../../images/images'
+import registrateService from 'services/registrate'
+import Eye from 'components/Icons/Eye'
+import IMAGES from 'images/images'
 
 export default function Registration () {
     const [email, setEmail] = useState('')
@@ -46,21 +46,8 @@ export default function Registration () {
       setFullnameHandler(e.target.value)
     }
 
-    const handlePasswordToggle = () => {
-      if(showPassword){
-        setShowPassword(false)
-      } else {
-        setShowPassword(true)
-      }
-    }
-
-    const handlePasswordConfirmationToggle = () => {
-      if(showPasswordConfirmation){
-        setShowPasswordConfirmation(false)
-      } else {
-        setShowPasswordConfirmation(true)
-      }
-    }
+    const handlePasswordToggle = () => setShowPassword(!showPassword)
+    const handlePasswordConfirmationToggle = () => setShowPasswordConfirmation(!showPasswordConfirmation)
 
     return (
       <div className="container-registration flex-column">

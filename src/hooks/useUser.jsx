@@ -1,7 +1,7 @@
 import { useContext, useCallback, useState } from 'react'
-import Context from '../contexts/UserContext'
-import loginService from './../services/login'
-import logoutService from './../services/logout'
+import Context from 'contexts/UserContext'
+import loginService from 'services/login'
+import logoutService from 'services/logout'
 
 export default function useUser () {
   const {token, setToken} = useContext(Context)
