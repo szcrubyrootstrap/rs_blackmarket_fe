@@ -4,6 +4,7 @@ import loginService from 'services/login'
 import logoutService from 'services/logout'
 import registrateService from 'services/registrate'
 import { useLocation } from 'wouter'
+import { urlPath } from 'src/setup'
 
 export default function useUser () {
   const {token, setToken, loginError, setLoginError, registrationError, setRegistrationError} = useContext(Context)
@@ -49,7 +50,7 @@ export default function useUser () {
     try{
       await registrateService({ email, password, password_confirmation })
       setRegistrationError({ error: false, message: '' })
-      navigate('/login')
+      navigate(urlPath.login)
     } catch (err) {
       setRegistrationError({ error: true, message: err.message })
     }

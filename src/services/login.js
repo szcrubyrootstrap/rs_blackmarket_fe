@@ -1,7 +1,7 @@
-const ENDPOINT = `${import.meta.env.VITE_SERVER_URL}/api/v1/users/sign_in`
+import { endpointsUrl } from 'src/setup'
 
 export default async function login ({ email, password }) {
-  const response = await fetch(`${ENDPOINT}`, {
+  const response = await fetch(endpointsUrl.signIn, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

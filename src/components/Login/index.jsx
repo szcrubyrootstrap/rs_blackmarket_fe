@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useLocation } from 'wouter'
 import useUser from 'hooks/useUser'
 import Eye from 'components/Icons/Eye'
+import { urlPath } from 'src/setup'
 
 export default function Login () {
   const [email, setEmail] = useState('')
@@ -12,7 +13,7 @@ export default function Login () {
 
   useEffect(() => {
     if (isLogged) {
-      navigate('/')
+      navigate(urlPath.home)
     }
   }, [isLogged, navigate])
 

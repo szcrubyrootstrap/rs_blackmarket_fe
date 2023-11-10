@@ -2,13 +2,14 @@ import Login from 'components/Login'
 import { useLocation, Link } from 'wouter'
 import IMAGES from 'images/images'
 import useUser from 'hooks/useUser'
+import { urlPath } from 'src/setup'
 
 export default function LoginPage () {
   const [, navigate] = useLocation()
   const {loginError, loginErrorMessage} = useUser()
 
   const redirectHandler = () => {
-    navigate('/registration')
+    navigate(urlPath.registration)
   }
 
   return (
@@ -22,7 +23,7 @@ export default function LoginPage () {
               { loginError && <strong>{loginErrorMessage}</strong> }
             </div>
             <div className="forgot-password flex-column">
-              <Link to="/">I forgot my password.</Link>
+              <Link to={urlPath.home}>I forgot my password.</Link>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { Link } from 'wouter'
 import Registration from 'components/Registration'
 import IMAGES from 'images/images'
 import useUser from 'hooks/useUser'
+import { urlPath } from 'src/setup'
 
 export default function LoginPage () {
   const {registrationError, registrationErrorMessage} = useUser()
@@ -17,10 +18,13 @@ export default function LoginPage () {
               { registrationError && <strong>{registrationErrorMessage}</strong> }
             </div>
             <div className="policies">
-              <p>By signing up, you accept the <Link to="/">Data Policy</Link> and the <Link to="/">Cookies Policy</Link>.</p>
+              <p>
+                By signing up, you accept the <Link to={urlPath.home}>Data Policy</Link> and the
+                <Link to={urlPath.home}>Cookies Policy</Link>.
+              </p>
             </div>
             <div className="account">
-              <p>Already have an account? <Link to="/login">Log in</Link></p>
+              <p>Already have an account? <Link to={urlPath.login}>Log in</Link></p>
             </div>
           </div>
         </div>

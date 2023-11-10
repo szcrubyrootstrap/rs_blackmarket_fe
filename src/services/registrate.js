@@ -1,7 +1,7 @@
-const ENDPOINT = `${import.meta.env.VITE_SERVER_URL}/api/v1/users`
+import { endpointsUrl } from 'src/setup'
 
 export default async function registrate ({ email, password, password_confirmation }) {
-  const response = await fetch(`${ENDPOINT}`, {
+  const response = await fetch(endpointsUrl.registrate, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

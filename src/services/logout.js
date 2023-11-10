@@ -1,7 +1,7 @@
-const ENDPOINT = `${import.meta.env.VITE_SERVER_URL}/api/v1/users/sign_out`
+import { endpointsUrl } from 'src/setup'
 
 export default async function logout (headers) {
-  const response = await fetch(`${ENDPOINT}`, {
+  const response = await fetch(endpointsUrl.signout, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
