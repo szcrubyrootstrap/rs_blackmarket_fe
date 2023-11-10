@@ -1,5 +1,5 @@
-import { useContext, useCallback } from 'react'
-import Context from 'contexts/UserContext'
+import { useCallback } from 'react'
+import { useUserContext } from 'contexts/UserContext'
 import loginService from 'services/login'
 import logoutService from 'services/logout'
 import registrateService from 'services/registrate'
@@ -7,7 +7,7 @@ import { useLocation } from 'wouter'
 import { urlPath } from 'src/setup'
 
 export default function useUser () {
-  const {token, setToken, loginError, setLoginError, registrationError, setRegistrationError} = useContext(Context)
+  const {token, setToken, loginError, setLoginError, registrationError, setRegistrationError} = useUserContext()
   const [, navigate] = useLocation()
   const headersData = (response) => {
     return {

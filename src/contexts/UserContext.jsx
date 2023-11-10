@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { useState, useContext, createContext } from 'react'
 
-const Context = React.createContext({})
+const Context = createContext({})
 
-export function UserContextProvider ({children}) {
+function UserContextProvider ({children}) {
   const [token, setToken] = useState(
     () => JSON.parse(window.localStorage.getItem('token'))
   )
@@ -14,4 +14,6 @@ export function UserContextProvider ({children}) {
   </Context.Provider>
 }
 
-export default Context
+export const useUserContext = () => useContext(Context)
+
+export default UserContextProvider

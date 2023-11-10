@@ -3,7 +3,7 @@ import { Route, Switch } from 'wouter'
 import Home from 'components/Home'
 import Login from 'pages/Login'
 import Registration from 'pages/Registration'
-import { UserContextProvider } from 'contexts/UserContext'
+import UserContextProvider from 'contexts/UserContext'
 import { urlPath } from 'src/setup'
 
 const routes = [
