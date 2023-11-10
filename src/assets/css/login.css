@@ -19,7 +19,7 @@ input {
   flex-direction: column;
 }
 
-.email, .password, .password-confirmation, .full-name {
+.email, .password, .password-confirmation, .fullname {
   margin-bottom: 0.8125rem;
 }
 

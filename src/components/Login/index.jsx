@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'wouter'
 import useUser from 'hooks/useUser'
-import Eye from 'components/Icons/Eye'
-import { urlPath } from 'src/setup'
+import { urlPath, capitalizeFirstLetter } from 'src/setup'
+import Input from 'templates/Form/input.jsx'
+import SubmitButton from 'templates/Form/submitButton'
 
 export default function Login () {
   const [email, setEmail] = useState('')
@@ -31,31 +32,33 @@ export default function Login () {
   }
 
   const handlePasswordToggle = () => setShowPassword(!showPassword)
+  const emailText = 'email'
+  const passwordText = 'password'
 
   return (
     <form onSubmit={submitHandler} className='flex-column'>
-      <div className="email flex-column">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          placeholder="Type your email"
-          onChange={changeEmailHandler} value={email}
-          required
-        />
-      </div>
-      <div className="password flex-column">
-        <label htmlFor="password">Password</label>
-        <input
-          type={showPassword ? 'text' : 'password'}
-          placeholder="Type your password"
-          onChange={changePasswordHandler} value={password}
-          required
-        />
-        <div className="eye-icon" onClick={handlePasswordToggle} title="Show password">
-          <Eye />
-        </div>
-      </div>
-      <button className="submit" type="submit">Login</button>
+      <Input
+        label={capitalizeFirstLetter(emailText)}
+        type={emailText}
+        value={email}
+        name={emailText}
+        className={emailText}
+        placeholder={`Type your ${emailText}`}
+        onChange={changeEmailHandler}
+        required={true}
+      />
+      <Input
+        label={capitalizeFirstLetter(passwordText)}
+        type={showPassword ? 'text' : 'password'}
+        value={password}
+        name={passwordText}
+        className={passwordText}
+        placeholder={`Type your ${passwordText}`}
+        onChange={changePasswordHandler}
+        required={true}
+        eyeIcon={handlePasswordToggle}
+      />
+      <SubmitButton text='Login' disabled={false} />
     </form>
   )
 }

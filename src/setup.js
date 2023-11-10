@@ -10,4 +10,11 @@ export const urlPath = {
   'registration': '/registration'
 }
 
+export function capitalizeFirstLetter (str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+export function isRegistration (componentName) { return (componentName === 'Registration') }
+export function isLogin (componentName) { return (componentName === 'Login') }
+
 export * from 'src/setup'

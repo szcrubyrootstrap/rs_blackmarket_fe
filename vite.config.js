@@ -14,7 +14,8 @@ export default defineConfig({
       contexts: "/src/contexts",
       pages: "/src/pages",
       services: "/src/services",
-      images: "/src/images"
+      images: "/src/images",
+      templates: "/src/templates"
     },
   }
 })
