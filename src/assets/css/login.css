@@ -26,7 +26,6 @@ input {
 .container {
   background: var(--main-card-color);
   border-radius: 0.5rem;
-  height: 26.56rem;
   padding: 2.93rem 2.25rem 0 2.25rem;
 }
 
@@ -51,10 +50,6 @@ input {
 .login, .registration-page {
   width: 22.5rem;
   gap: 1.25rem;
-}
-
-.login {
-  height: 35.93rem;
 }
 
 .submit {
@@ -94,11 +89,22 @@ input {
   color: var(--error-message);
   display: flex;
   justify-content: center;
+  text-align: center;
+  margin-bottom: 0.625rem;
 }
 
 .footer {
   flex: 1;
   justify-content: center;
+  padding: 1.875rem 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.separation strong{
+  margin-top: 2rem;
 }
 
 .forgot-password {
