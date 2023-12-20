@@ -11,9 +11,7 @@ export default function Template ({formComponent: Form, extraComponent: Extra}) 
     } else { return '' }
   }
 
-  const containerType = (componentName) => {
-    return isRegistration(componentName) ? '-registration' : ''
-  }
+  const containerType = (componentName) => isRegistration(componentName) ? '-registration' : '' ;
 
   return (
     <div className="background flex-column">

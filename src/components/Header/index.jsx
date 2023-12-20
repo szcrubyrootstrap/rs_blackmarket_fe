@@ -14,7 +14,7 @@ export default function Header () {
     <header>
       {
         isLogged
-        ? <Link href="#" onClick={handleClick}>Logout</Link>
+        ? <Link href="!#" onClick={handleClick}>Logout</Link>
         : <Link to={urlPath.login}>Login</Link>
       }
     </header>

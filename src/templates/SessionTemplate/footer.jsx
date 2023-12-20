@@ -3,9 +3,7 @@ import ForgotPassword from 'templates/SessionTemplate/forgotPassword'
 import PoliciesAcounts from 'templates/SessionTemplate/policiesAccount'
 import { isRegistration, isLogin } from 'src/setup'
 
-const addPadding = (formName) => {
-  return isRegistration(formName) ? 'no-padding' : ''
-}
+const addPadding = (formName) =>  isRegistration(formName) ? 'no-padding' : '';
 
 export default function Footer ({formName}) {
   return (
