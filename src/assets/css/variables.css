@@ -1,0 +1,10 @@
+:root {
+  --submit-disabled: #636363;
+  --submit-button: #00031A;
+  --submit-hover: #E0E0E0;
+  --main-card-color: #fff;
+  --error-message: #D42F1A;
+  --link-color: #076CE0;
+  --link-hover: #747bff;
+  --text-color: #00031A;
+}
