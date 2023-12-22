@@ -45,7 +45,7 @@ input {
   padding: 4.15rem 7.43rem;
 }
 
-.login, .registration-page {
+.login, .registration-page, .reset-password {
   width: 22.5rem;
   gap: 1.25rem;
 }
@@ -69,10 +69,14 @@ input {
   background: var(--main-card-color);
 }
 
-.registration-button {
+.registration-button, .go-back-link {
   align-self: stretch;
   background: var(--main-card-color);
   color: black;
+}
+
+.go-back-link {
+  margin-top: 1rem;
 }
 
 .registration p {
@@ -143,6 +147,17 @@ a {
   right: 1.06rem;
   bottom: 0.676rem;
   display: flex;
+}
+
+.reset-password {
+  p {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  form {
+    margin-top: 2rem;
+  }
 }
 
 @media (max-width: 45rem) {
