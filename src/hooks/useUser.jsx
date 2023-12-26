@@ -4,6 +4,7 @@ import loginService from 'services/login'
 import logoutService from 'services/logout'
 import registrateService from 'services/registrate'
 import resetPasswordService from 'services/resetPassword'
+import updatePasswordService from 'services/updatePassword'
 import { useLocation } from 'wouter'
 import { urlPath } from 'src/setup'
 
@@ -63,6 +64,18 @@ export default function useUser () {
     try{
       await resetPasswordService({ email })
       setRequestError({ error: false, message: '' })
+      navigate(urlPath.passwordInstructions)
+    } catch (err) {
+      setRequestError({ error: true, message: err.message })
+    }
+  }, [navigate, setRequestError])
+
+  const updatePassword = useCallback(async ({ password, password_confirmation, headers }) => {
+    setRequestError({ error: false, message: '' })
+
+    try{
+      await updatePasswordService({ password, password_confirmation, headers })
+      setRequestError({ error: false, message: '' })
       navigate(urlPath.login)
     } catch (err) {
       setRequestError({ error: true, message: err.message })
@@ -76,6 +89,7 @@ export default function useUser () {
     login,
     logout,
     registrate,
-    resetPassword
+    resetPassword,
+    updatePassword
   }
 }

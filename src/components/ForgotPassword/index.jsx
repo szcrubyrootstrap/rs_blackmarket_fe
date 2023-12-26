@@ -1,22 +1,17 @@
 import { useState } from 'react'
-import { capitalizeFirstLetter, urlPath } from 'src/setup'
+import { capitalizeFirstLetter } from 'src/setup'
 import Input from 'templates/Form/input.jsx'
 import SubmitButton from 'templates/Form/submitButton'
-import { useLocation } from 'wouter'
+import ReturnLoginButton from 'components/ReturnLoginButton'
 import useUser from 'hooks/useUser'
 
 export default function ForgotPassword () {
   const [email, setEmail] = useState('')
-  const [, navigate] = useLocation()
   const {resetPassword} = useUser()
 
   const submitHandler = (e) => {
     e.preventDefault()
     resetPassword({email})
-  }
-
-  const redirectHandler = () => {
-    navigate(urlPath.login)
   }
 
   const changeEmailHandler = (e) => {
@@ -40,9 +35,7 @@ export default function ForgotPassword () {
         />
         <SubmitButton text='Recover password' disabled={false} />
       </form>
-      <button onClick={redirectHandler} className="go-back-link">
-        Go back to login
-      </button>
+      <ReturnLoginButton />
     </>
   )
 }

@@ -45,7 +45,7 @@ input {
   padding: 4.15rem 7.43rem;
 }
 
-.login, .registration-page, .reset-password {
+.login, .registration-page, .reset-password, .password-instructions, .update-password {
   width: 22.5rem;
   gap: 1.25rem;
 }
@@ -152,6 +152,33 @@ a {
 .reset-password {
   p {
     margin-top: 3rem;
+    text-align: center;
+  }
+
+  form {
+    margin-top: 2rem;
+  }
+}
+
+.password-instructions {
+  svg {
+    align-self: center;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  a {
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+
+.update-password {
+  p{
+    margin-top: 2rem;
     text-align: center;
   }
 

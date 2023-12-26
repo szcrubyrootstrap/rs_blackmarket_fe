@@ -1,7 +1,7 @@
 import { endpointsUrl } from 'src/setup'
 
 export default async function resetPassword ({ email }) {
-  const redirectUrl = 'example.com'
+  const redirectUrl = `${import.meta.env.VITE_LOCALHOST}/update_password`
   const response = await fetch(endpointsUrl.resetPassword, {
     method: 'POST',
     headers: {
