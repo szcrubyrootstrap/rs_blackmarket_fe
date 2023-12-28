@@ -1,0 +1,29 @@
+{
+  "hash": "5ebc80a2",
+  "browserHash": "9dccef93",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "e02a6e3a",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "1f397336",
+      "needsInterop": true
+    },
+    "wouter": {
+      "src": "../../node_modules/wouter/index.js",
+      "file": "wouter.js",
+      "fileHash": "07c64ca7",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-L7APZED3": {
+      "file": "chunk-L7APZED3.js"
+    }
+  }
+}

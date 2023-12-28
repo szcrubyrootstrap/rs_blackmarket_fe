@@ -3,11 +3,13 @@ import { useUserContext } from 'contexts/UserContext'
 import loginService from 'services/login'
 import logoutService from 'services/logout'
 import registrateService from 'services/registrate'
+import resetPasswordService from 'services/resetPassword'
+import updatePasswordService from 'services/updatePassword'
 import { useLocation } from 'wouter'
 import { urlPath } from 'src/setup'
 
 export default function useUser () {
-  const {token, setToken, loginError, setLoginError, registrationError, setRegistrationError} = useUserContext()
+  const {token, setToken, requestError, setRequestError} = useUserContext()
   const [, navigate] = useLocation()
   const headersData = (response) => {
     return {
@@ -20,19 +22,19 @@ export default function useUser () {
   }
 
   const login = useCallback(async ({ email, password }) => {
-    setLoginError({ loading: true, error: false, message: '' })
+    setRequestError({ loading: true, error: false, message: '' })
 
     try{
       const response = await loginService({ email, password })
 
       window.localStorage.setItem('token', JSON.stringify(headersData(response)))
       setToken(headersData(response))
-      setLoginError({ error: false, message: '' })
+      setRequestError({ error: false, message: '' })
     } catch (err) {
       window.localStorage.removeItem('token')
-      setLoginError({ error: true, message: err.message })
+      setRequestError({ error: true, message: err.message })
     }
-  }, [setToken, setLoginError])
+  }, [setToken, setRequestError])
 
   const logout = useCallback(async () => {
     try {
@@ -45,25 +47,49 @@ export default function useUser () {
   }, [token, setToken])
 
   const registrate = useCallback(async ({ email, password, password_confirmation }) => {
-    setRegistrationError({ error: false, message: '' })
+    setRequestError({ error: false, message: '' })
 
     try{
       await registrateService({ email, password, password_confirmation })
-      setRegistrationError({ error: false, message: '' })
+      setRequestError({ error: false, message: '' })
       navigate(urlPath.login)
     } catch (err) {
-      setRegistrationError({ error: true, message: err.message })
+      setRequestError({ error: true, message: err.message })
     }
-  }, [navigate, setRegistrationError])
+  }, [navigate, setRequestError])
+
+  const resetPassword = useCallback(async ({ email }) => {
+    setRequestError({ error: false, message: '' })
+
+    try{
+      await resetPasswordService({ email })
+      setRequestError({ error: false, message: '' })
+      navigate(urlPath.passwordInstructions)
+    } catch (err) {
+      setRequestError({ error: true, message: err.message })
+    }
+  }, [navigate, setRequestError])
+
+  const updatePassword = useCallback(async ({ password, password_confirmation, headers }) => {
+    setRequestError({ error: false, message: '' })
+
+    try{
+      await updatePasswordService({ password, password_confirmation, headers })
+      setRequestError({ error: false, message: '' })
+      navigate(urlPath.login)
+    } catch (err) {
+      setRequestError({ error: true, message: err.message })
+    }
+  }, [navigate, setRequestError])
 
   return {
     isLogged: Boolean(token),
-    loginError: Boolean(loginError.error),
-    loginErrorMessage: loginError.message,
-    registrationError: Boolean(registrationError.error),
-    registrationErrorMessage: registrationError.message,
+    requestError: Boolean(requestError.error),
+    requestErrorMessage: requestError.message,
     login,
     logout,
-    registrate
+    registrate,
+    resetPassword,
+    updatePassword
   }
 }
