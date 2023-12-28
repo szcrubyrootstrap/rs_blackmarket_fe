@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'wouter'
+import { useNavigate } from "react-router-dom";
 import useUser from 'hooks/useUser'
 import { urlPath, capitalizeFirstLetter, requestHeaders } from 'src/setup'
 import Input from 'templates/Form/input.jsx'
@@ -11,7 +11,7 @@ export default function UpdatePasswordForm () {
   const [password_confirmation, setPasswordConfirmation] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
-  const [, navigate] = useLocation()
+  const navigate = useNavigate()
   const {isLogged, updatePassword} = useUser()
 
   useEffect(() => {

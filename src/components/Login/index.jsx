@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'wouter'
+import { useNavigate } from 'react-router-dom'
 import useUser from 'hooks/useUser'
 import { urlPath, capitalizeFirstLetter } from 'src/setup'
 import Input from 'templates/Form/input.jsx'
@@ -9,7 +9,7 @@ export default function Login () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false);
-  const [, navigate] = useLocation()
+  const navigate = useNavigate();
   const {isLogged, login} = useUser()
 
   useEffect(() => {

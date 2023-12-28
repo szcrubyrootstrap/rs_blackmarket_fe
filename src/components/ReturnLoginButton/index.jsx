@@ -1,8 +1,8 @@
 import { urlPath } from 'src/setup'
-import { useLocation } from 'wouter'
+import { useNavigate } from "react-router-dom";
 
 export default function ReturnLoginButton () {
-  const [, navigate] = useLocation()
+  const navigate = useNavigate();
   const redirectHandler = () => {
     navigate(urlPath.login)
   }

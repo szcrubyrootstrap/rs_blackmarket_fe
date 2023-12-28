@@ -1,6 +1,8 @@
-import { Route, Switch } from 'wouter'
-
-import Home from 'components/Home'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom"
+import Dashboard from 'pages/Dashboard'
 import Login from 'pages/Login'
 import Registration from 'pages/Registration'
 import ResetPassword from 'pages/ResetPassword'
@@ -9,24 +11,20 @@ import UpdatePassword from 'pages/UpdatePassword'
 import UserContextProvider from 'contexts/UserContext'
 import { urlPath } from 'src/setup'
 
-const routes = [
-  { component: Home, path: urlPath.home },
-  { component: Login, path: urlPath.login },
-  { component: UpdatePassword, path: urlPath.updatePassword },
-  { component: Registration, path: urlPath.registration },
-  { component: ResetPassword, path: urlPath.resetPassword },
-  { component: PasswordEmailConfirmation, path: urlPath.passwordConfirmation },
-]
+const router = createBrowserRouter([
+  { element: <Dashboard />, path: urlPath.dashboard },
+  { element: <Login />, path: urlPath.login },
+  { element: <UpdatePassword />, path: urlPath.updatePassword },
+  { element: <Registration />, path: urlPath.registration },
+  { element: <ResetPassword />, path: urlPath.resetPassword },
+  { element: <PasswordEmailConfirmation />, path: urlPath.passwordConfirmation },
+]);
 
 function App() {
   return (
     <>
       <UserContextProvider>
-        <Switch>
-          {
-            routes.map(({component, path}, index) => <Route key={index} component={component} path={path} />)
-          }
-        </Switch>
+        <RouterProvider router={router} />
       </UserContextProvider>
     </>
   )
