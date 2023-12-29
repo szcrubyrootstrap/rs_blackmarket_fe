@@ -134,7 +134,7 @@ a {
   padding-bottom: 1.875rem;
 }
 
-.password, .password-confirmation {
+.password, .password-confirmation, .search {
   position: relative;
 }
 
@@ -147,6 +147,13 @@ a {
   right: 1.06rem;
   bottom: 0.676rem;
   display: flex;
+}
+
+.search .search-icon {
+  position: absolute;
+  display: flex;
+  right: 0rem;
+  bottom: 0.1rem;
 }
 
 .reset-password {

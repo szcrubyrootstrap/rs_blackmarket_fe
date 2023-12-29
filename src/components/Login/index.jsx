@@ -56,7 +56,9 @@ export default function Login () {
         placeholder={`Type your ${passwordText}`}
         onChange={changePasswordHandler}
         required={true}
-        eyeIcon={handlePasswordToggle}
+        iconEvent={handlePasswordToggle}
+        iconClass='eye'
+        iconTitle='Show password'
       />
       <SubmitButton text='Login' disabled={false} />
     </form>

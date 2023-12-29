@@ -52,7 +52,9 @@ export default function UpdatePasswordForm () {
           placeholder={`Enter your ${passwordText}`}
           onChange={changePasswordHandler}
           required={true}
-          eyeIcon={handlePasswordToggle}
+          iconEvent={handlePasswordToggle}
+          iconClass='eye'
+          iconTitle='Show password'
         />
         <Input
           label='Re-type new Password'
@@ -63,7 +65,9 @@ export default function UpdatePasswordForm () {
           placeholder={`Re-enter your ${passwordText}`}
           onChange={changePasswordConfirmationHandler}
           required={true}
-          eyeIcon={handlePasswordConfirmationToggle}
+          iconEvent={handlePasswordConfirmationToggle}
+          iconClass='eye'
+          iconTitle='Show password'
         />
         <SubmitButton text='Confirm new password' disabled={false} />
       </form>
