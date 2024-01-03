@@ -1,4 +1,4 @@
-import { Link } from 'wouter'
+import { Link } from 'react-router-dom'
 import useUser from 'hooks/useUser'
 import { urlPath } from 'src/setup'
 
@@ -14,7 +14,7 @@ export default function Header () {
     <header>
       {
         isLogged
-        ? <Link href="!#" onClick={handleClick}>Logout</Link>
+        ? <Link to="!#" onClick={handleClick}>Logout</Link>
         : <Link to={urlPath.login}>Login</Link>
       }
     </header>

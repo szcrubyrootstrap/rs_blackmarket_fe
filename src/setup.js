@@ -6,7 +6,7 @@ export const endpointsUrl = {
 }
 
 export const urlPath = {
-  'home': '/',
+  'dashboard': '/',
   'login': '/login',
   'registration': '/registration',
   'resetPassword': '/reset_password',

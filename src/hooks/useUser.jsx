@@ -5,12 +5,12 @@ import logoutService from 'services/logout'
 import registrateService from 'services/registrate'
 import resetPasswordService from 'services/resetPassword'
 import updatePasswordService from 'services/updatePassword'
-import { useLocation } from 'wouter'
+import { useNavigate } from "react-router-dom";
 import { urlPath } from 'src/setup'
 
 export default function useUser () {
   const {token, setToken, requestError, setRequestError} = useUserContext()
-  const [, navigate] = useLocation()
+  const navigate = useNavigate();
   const headersData = (response) => {
     return {
       accessToken: response.headers.get('access-token'),

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'wouter'
+import { useNavigate } from 'react-router-dom'
 import useUser from 'hooks/useUser'
 import { urlPath, capitalizeFirstLetter } from 'src/setup'
 import Input from 'templates/Form/input.jsx'
@@ -9,7 +9,7 @@ export default function Login () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false);
-  const [, navigate] = useLocation()
+  const navigate = useNavigate();
   const {isLogged, login} = useUser()
 
   useEffect(() => {
@@ -56,7 +56,9 @@ export default function Login () {
         placeholder={`Type your ${passwordText}`}
         onChange={changePasswordHandler}
         required={true}
-        eyeIcon={handlePasswordToggle}
+        iconEvent={handlePasswordToggle}
+        iconClass='eye'
+        iconTitle='Show password'
       />
       <SubmitButton text='Login' disabled={false} />
     </form>

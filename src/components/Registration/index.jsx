@@ -73,7 +73,9 @@ export default function Registration () {
         placeholder={`Type your ${passwordText}`}
         onChange={changePasswordHandler}
         required={true}
-        eyeIcon={handlePasswordToggle}
+        iconEvent={handlePasswordToggle}
+        iconClass='eye'
+        iconTitle='Show password'
       />
       <Input
         label='Confirm Password'
@@ -84,7 +86,9 @@ export default function Registration () {
         placeholder={`Type your ${passwordText}`}
         onChange={changePasswordConfirmationHandler}
         required={true}
-        eyeIcon={handlePasswordConfirmationToggle}
+        iconEvent={handlePasswordConfirmationToggle}
+        iconClass='eye'
+        iconTitle='Show password'
       />
       <SubmitButton text='Sign up' disabled={!email || !fullname || !password || !password_confirmation} />
     </form>

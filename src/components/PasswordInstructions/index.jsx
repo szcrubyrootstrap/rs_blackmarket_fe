@@ -1,5 +1,5 @@
 import Inbox from 'components/PasswordInstructions/inbox'
-import { Link } from 'wouter'
+import { Link } from 'react-router-dom'
 import { urlPath } from 'src/setup'
 
 export default function PasswordInstructions () {

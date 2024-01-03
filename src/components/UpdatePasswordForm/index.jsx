@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'wouter'
+import { useNavigate } from "react-router-dom";
 import useUser from 'hooks/useUser'
 import { urlPath, capitalizeFirstLetter, requestHeaders } from 'src/setup'
 import Input from 'templates/Form/input.jsx'
@@ -11,7 +11,7 @@ export default function UpdatePasswordForm () {
   const [password_confirmation, setPasswordConfirmation] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
-  const [, navigate] = useLocation()
+  const navigate = useNavigate()
   const {isLogged, updatePassword} = useUser()
 
   useEffect(() => {
@@ -52,7 +52,9 @@ export default function UpdatePasswordForm () {
           placeholder={`Enter your ${passwordText}`}
           onChange={changePasswordHandler}
           required={true}
-          eyeIcon={handlePasswordToggle}
+          iconEvent={handlePasswordToggle}
+          iconClass='eye'
+          iconTitle='Show password'
         />
         <Input
           label='Re-type new Password'
@@ -63,7 +65,9 @@ export default function UpdatePasswordForm () {
           placeholder={`Re-enter your ${passwordText}`}
           onChange={changePasswordConfirmationHandler}
           required={true}
-          eyeIcon={handlePasswordConfirmationToggle}
+          iconEvent={handlePasswordConfirmationToggle}
+          iconClass='eye'
+          iconTitle='Show password'
         />
         <SubmitButton text='Confirm new password' disabled={false} />
       </form>
